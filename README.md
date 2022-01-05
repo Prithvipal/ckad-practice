@@ -12,4 +12,4 @@
 
 ### Notes:
 1. Difference between replication controller and and replicaset is that replicaset can monitor existing pod which were created before replicaset. It find those pods by selector. This capability is not available in replication controller.
-2. Deployment is superset of replicaset because it has all the capablities as replicaset and some extra like: rolling update, rollback(in case of error), pause and resume.
+2. Deployment is superset of replicaset because it has all the capablities as replicaset and some extra like: rolling update, rollback(in case of error), pause and resume. Also, when we create new deployment, it automatically creates a new replicaset.
