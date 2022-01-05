@@ -9,6 +9,8 @@
 3. kubectl scale --replicas=6 -f replicaset-defination.yaml // changes the replicas using same file without modifying the file
 4. kubectl scale --replicas=6 replicaset myapp-replicaset
 5. kubectl run nginx --image nginx
+6. kubectl get all // get all the kubernetes objects
+7. kubectl get all -A // get all the kubernetes objects of all the namespaces
 
 ### Notes:
 1. Difference between replication controller and and replicaset is that replicaset can monitor existing pod which were created before replicaset. It find those pods by selector. This capability is not available in replication controller.
