@@ -14,6 +14,10 @@
 8. `kubectl config set-context $(kubectl config current-context) --namespace=dev` // to set namespace as default for all kubectl command. In this case, we dont need to specify -n dev in kubect get pods command to get pods of dev namepsace. If we do this then we need to specify -n default to get objects from default namespace.
 9. `kubectl create configmap <config-name>` // creates configmap with given name
 10. `kubectl create configmap <config-name> --from-literal=APP_COLOR=blue --from-literal=APP_MOD=prod` // creates configmap with given name and configs
+11. `kubectl get configmap` // list config map
+12. `kubectl get configmap <config-name> -o yaml` // show config map details in yaml format
+13. `kubectl describe configmap <config-name>` // describes config map
+
 
 ### Notes:
 1. Difference between replication controller and and replicaset is that replicaset can monitor existing pod which were created before replicaset. It find those pods by selector. This capability is not available in replication controller.
