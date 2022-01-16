@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sleeper-pod
+
+spec:
+  containers:
+    - name: my-sleeper
+      image: prithvirathorelearn/my-sleeper
+      args: ["10"] # overrides CMD args, there is a command field that overrides the ENTRYPOINT of docker file
