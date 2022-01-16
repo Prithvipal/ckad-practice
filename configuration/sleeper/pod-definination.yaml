@@ -6,5 +6,6 @@ metadata:
 spec:
   containers:
     - name: my-sleeper
-      image: prithvirathorelearn/my-sleeper
+      image: my-sleeper
       args: ["10"] # overrides CMD args, there is a command field that overrides the ENTRYPOINT of docker file
+      imagePullPolicy: IfNotPresent
