@@ -17,6 +17,8 @@
 11. `kubectl get configmap` // list config map
 12. `kubectl get configmap <config-name> -o yaml` // show config map details in yaml format
 13. `kubectl describe configmap <config-name>` // describes config map
+14. `kubectl create secret generic app-secret  --from-literal=DB_HOST=mysql --from-literal=DB_USER=root` // creates secrets with provided values
+15. `kubectl create secret generic app-secret  --from-file=app-secrets.properties` // create secret from properties file
 
 
 ### Notes:
