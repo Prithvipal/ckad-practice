@@ -1,8 +1,7 @@
 # ckad-practice
 
-## Core Concepts
 
-### Important commands
+## Important commands
 
 1. `kubectl create -f file-name.yaml`
 2. `kubectl replace -f file-name.yaml` // to update the kubenetes object using existing file.
@@ -24,7 +23,11 @@
 18. `kubectl taint nodes node1 node-role.kubernetes.io/master:NoSchedule-` to untaint a node
 19. `kubectl label nodes <node-name> <label-key>=<label-value>` // to set label to the node. These labels can be used while adding nodeSelector in pod definition file.
 
+## Desing Pattern: Multi container pod
+- Sidecar
+- Adaptor
+- Ambassador
 
-### Notes:
+## Notes:
 1. Difference between replication controller and and replicaset is that replicaset can monitor existing pod which were created before replicaset. It find those pods by selector. This capability is not available in replication controller.
 2. Deployment is superset of replicaset because it has all the capablities as replicaset and some extra like: rolling update, rollback(in case of error), pause and resume. Also, when we create new deployment, it automatically creates a new replicaset.
