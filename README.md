@@ -19,6 +19,7 @@
 13. `kubectl describe configmap <config-name>` // describes config map
 14. `kubectl create secret generic app-secret  --from-literal=DB_HOST=mysql --from-literal=DB_USER=root` // creates secrets with provided values
 15. `kubectl create secret generic app-secret  --from-file=app-secrets.properties` // create secret from properties file
+16. `kubectl create serviceaccount dashboard-sa` // creates new service account and secrets for this service account
 
 
 ### Notes:
