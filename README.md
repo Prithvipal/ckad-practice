@@ -22,6 +22,8 @@
 16. `kubectl create serviceaccount dashboard-sa` // creates new service account and secrets for this service account
 17. `kubectl taint nodes node1 app=blue:NoSchedule` // taints the node. blue is the taint value and NoSchedule is the taint-effect. There can be three possible values for taint-effect: NoSchedule, PreferNoSchedule, NoExecute
 18. `kubectl taint nodes node1 node-role.kubernetes.io/master:NoSchedule-` to untaint a node
+19. `kubectl label nodes <node-name> <label-key>=<label-value>` // to set label to the node. These labels can be used while adding nodeSelector in pod definition file.
+
 
 ### Notes:
 1. Difference between replication controller and and replicaset is that replicaset can monitor existing pod which were created before replicaset. It find those pods by selector. This capability is not available in replication controller.

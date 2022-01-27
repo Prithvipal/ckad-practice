@@ -1,0 +1,18 @@
+# Note this is just an example file. It might not create pod when you try to deploy a pod using this file because image is not exist
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+  - name: data-processing
+    image: data-processing
+  nodeSelector:
+    size: Large # this label will be used to select node. we can set lable to the pod be this command: kubectl label nodes node1 size=Large. 
+
+# Node Selector has some limitation for example if we want to deploy pod on following case which is not possible to define:
+# - Large or Medium
+# - Not Smale
+# We can use Node Affinity to serve this purpose.
+
+
