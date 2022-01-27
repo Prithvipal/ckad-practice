@@ -1,0 +1,34 @@
+# Note this is just an example file. It might not create pod when you try to deploy a pod using this file because image is not exist
+# Unlike node selector, it allows more complex expression.
+# ex: 
+#  --Large or Medium
+#  -- Not Small etc.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-node
+spec:
+  containers
+  - name: data-processor
+    image: data-processor
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIngoredDuringExecution:
+        nodeSelectorTerm:
+        - matchExpressions:
+          - key: size
+            operator: In
+            values:
+            - Large
+            - Medium
+
+
+# there are different type of node affinity
+#
+# Available as of now:
+# - requiredDuringSchedulingIngoredDuringExecution
+# - preferredDuringSchedulingIngoredDuringExecution
+#
+# Planned in the future:
+# - requiredDuringSchedulingRequiredDuringExecution
