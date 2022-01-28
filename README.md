@@ -28,6 +28,41 @@
 - Adaptor
 - Ambassador
 
+## Pod Conditions
+- PodScheduled
+- Initialized
+- ContainerReady
+- Ready
+
+### Readiness Probe
+When pod is deployed successfully, the pod condition change to Ready and service can start sending requests to the new pod.
+But is not necessary that application running within the pod is actually ready to accept requests. For example some application takes few seconds to be start accepting request.
+So we should not mark Pod as ready until application within the pod is actually ready.
+
+This can be achieved by readiness probe. example pod definition is in dir of this repo: observability/readiness/readiness-pod-def.yaml file
+
+There are three posssible way to set readiness probe:
+- Http Get
+```
+readinessProbe:
+    httpGet:
+        path: /api/ready
+        port: 8080
+```
+- TCP Socket
+```
+readinessProbe:
+    tcpSocket:
+        port: 3306
+```
+- Command execution
+```
+readinessProbe:
+    exec:
+        command:
+          - cat
+          - /app/is_ready
+```
 ## Notes:
 1. Difference between replication controller and and replicaset is that replicaset can monitor existing pod which were created before replicaset. It find those pods by selector. This capability is not available in replication controller.
 2. Deployment is superset of replicaset because it has all the capablities as replicaset and some extra like: rolling update, rollback(in case of error), pause and resume. Also, when we create new deployment, it automatically creates a new replicaset.
