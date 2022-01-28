@@ -43,25 +43,36 @@ This can be achieved by readiness probe. example pod definition is in dir of thi
 
 There are three posssible way to set readiness probe:
 - Http Get
-```
+```yaml
 readinessProbe:
     httpGet:
         path: /api/ready
         port: 8080
 ```
 - TCP Socket
-```
+```yaml
 readinessProbe:
     tcpSocket:
         port: 3306
 ```
 - Command execution
-```
+```yaml
 readinessProbe:
     exec:
         command:
           - cat
           - /app/is_ready
+```
+
+There are other option in readiness probe like: `initialDelayProbe`, `periodSeconds` and `failureThreshold`
+```yaml
+readinessProbe:
+    httpGet:
+        path: /api/ready
+        port: 8080
+    initialDelayProbe: 10 # to set initial delay to check probes
+    periodSeconds: 5
+    failureThreshold: 8
 ```
 ## Notes:
 1. Difference between replication controller and and replicaset is that replicaset can monitor existing pod which were created before replicaset. It find those pods by selector. This capability is not available in replication controller.
