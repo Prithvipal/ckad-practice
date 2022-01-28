@@ -115,6 +115,9 @@ livenessProbe:
           - /app/is_ready
 ```
 
+## Deployment Strategy
+- Recreate
+- Rolling Update
 
 ## Notes:
 1. Difference between replication controller and and replicaset is that replicaset can monitor existing pod which were created before replicaset. It find those pods by selector. This capability is not available in replication controller.
