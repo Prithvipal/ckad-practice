@@ -1,0 +1,17 @@
+# Note this is just an example file. It might not create pod when you try to deploy a pod using this file because image is not exist
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-webapp
+  labels:
+    name: simple-webapp
+spec:
+  containers:
+  - name: simple-webapp
+    image: simple-webapp
+    ports:
+      - containerPorts: 8080
+    livenessProbe:
+      httpGet:
+        path: /api/ready
+        port: 8080

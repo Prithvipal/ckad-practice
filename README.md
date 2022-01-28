@@ -39,7 +39,7 @@ When pod is deployed successfully, the pod condition change to Ready and service
 But is not necessary that application running within the pod is actually ready to accept requests. For example some application takes few seconds to be start accepting request.
 So we should not mark Pod as ready until application within the pod is actually ready.
 
-This can be achieved by readiness probe. example pod definition is in dir of this repo: observability/readiness/readiness-pod-def.yaml file
+This can be achieved by readiness probe. example pod definition is in dir of this repo: observability/readiness-probe/readiness-pod-def.yaml file
 
 There are three posssible way to set readiness probe:
 - Http Get
@@ -74,6 +74,43 @@ readinessProbe:
     periodSeconds: 5
     failureThreshold: 8
 ```
+
+There are three posssible way to set liveliness probe. example pod definition is in dir of this repo: observability/liveness-probe/liveness-pod-def.yaml file
+
+### liveness probe
+It is useful to check if container within the pod is healthy. It test container periodically. If test failed the it restart the container.
+
+
+
+Q: What does it mean that container is healthy? <br>
+A: Following are the cases: <br> 
+- In case of webapp, the api server is up and running. HTTP Get - /api/healthy
+- In case of database, we can check if a particular TCP is listening. TCP test - 3306
+- Or simply execute a command to perform a test.
+
+- Http Get
+```yaml
+livenessProbe:
+    httpGet:
+        path: /api/ready
+        port: 8080
+```
+- TCP Socket
+```yaml
+livenessProbe:
+    tcpSocket:
+        port: 3306
+```
+- Command execution
+```yaml
+livenessProbe:
+    exec:
+        command:
+          - cat
+          - /app/is_ready
+```
+
+
 ## Notes:
 1. Difference between replication controller and and replicaset is that replicaset can monitor existing pod which were created before replicaset. It find those pods by selector. This capability is not available in replication controller.
 2. Deployment is superset of replicaset because it has all the capablities as replicaset and some extra like: rolling update, rollback(in case of error), pause and resume. Also, when we create new deployment, it automatically creates a new replicaset.
