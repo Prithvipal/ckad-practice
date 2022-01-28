@@ -22,6 +22,11 @@
 17. `kubectl taint nodes node1 app=blue:NoSchedule` // taints the node. blue is the taint value and NoSchedule is the taint-effect. There can be three possible values for taint-effect: NoSchedule, PreferNoSchedule, NoExecute
 18. `kubectl taint nodes node1 node-role.kubernetes.io/master:NoSchedule-` to untaint a node
 19. `kubectl label nodes <node-name> <label-key>=<label-value>` // to set label to the node. These labels can be used while adding nodeSelector in pod definition file.
+20. `kubectl top nodes` // to view node performance metrics: cpu and memory consumption
+21. `kubectl top pods` // to view pod performance metrics: cpu and memory consumption
+22. `kubectl get pod --selector type=front-end` // gets all the pod by specified labels
+23. `kubectl rollout status deploy/myapp` // shows rollout status
+24. `kubectl rollout status deploy/myapp` // shows history and revisions of the deployment
 
 ## Desing Pattern: Multi container pod
 - Sidecar
