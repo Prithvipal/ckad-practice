@@ -26,7 +26,10 @@
 21. `kubectl top pods` // to view pod performance metrics: cpu and memory consumption
 22. `kubectl get pod --selector type=front-end` // gets all the pod by specified labels
 23. `kubectl rollout status deploy/myapp` // shows rollout status
-24. `kubectl rollout status deploy/myapp` // shows history and revisions of the deployment
+24. `kubectl rollout history deploy/myapp` // shows history and revisions of the deployment
+25. `kubectl set image deploy/<deployment-name> <container-name>=<image-name-with-tag>` // Sets new image to container of deployment. Example: `kubectl set image deploy/myapp-deployment  nginx-container=nginx:1.9.1`
+26. `kubectl rollout undo deploy/myapp`
+
 
 ## Desing Pattern: Multi container pod
 - Sidecar
@@ -118,6 +121,8 @@ livenessProbe:
 ## Deployment Strategy
 - Recreate
 - Rolling Update
+
+The deployment strategy of existing deployment can be seen by describe command. You will find the field called `StrategyType` in the output of describe command.
 
 ## Notes:
 1. Difference between replication controller and and replicaset is that replicaset can monitor existing pod which were created before replicaset. It find those pods by selector. This capability is not available in replication controller.
