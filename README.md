@@ -31,6 +31,8 @@
 26. `kubectl rollout undo deploy/myapp` // undo the deployment
 27. `kubectl rollout history deploy/myapp-deployment --revision=5` // Status of each revision individually
 28. `kubectl set image deploy/myapp-deployment nginx=nginx:1.17 --record` // When you run kubectl rollout history command, it does not show the value for CHANGE-CAUSE column. If we want to set value for this column while changing deployment we can specify `--record` flag. Please note that you can specify this flag while running kubectl apply command.
+29. `kubectl get job`
+30. `kubectl get cronjob`
 
 
 

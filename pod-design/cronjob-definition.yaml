@@ -1,0 +1,21 @@
+# The cron job definition is more complex that other defintions. It contains the whole spec section of job within spec--> jobTemplate. 
+# There will be 3 spec section in cron job. 
+#   1. cron job
+#   2. job
+#   3. pod
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: reporting-cron-job
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      completions: 3
+      parallelism: 3
+      template: 
+        spec:
+          containers:
+          - name: reporting-tool
+            image: reporting-tool
+          restartPolicy: Never
