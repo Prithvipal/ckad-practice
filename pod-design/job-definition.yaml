@@ -1,3 +1,4 @@
+# like deployment definition, job definition contains pod definition within spec-->template
 apiVersion: batch/v1
 kind: Job
 metadata:
