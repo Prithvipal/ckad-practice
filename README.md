@@ -35,6 +35,7 @@
 30. `kubectl get cronjob`
 31. `kubectl create job <job-name> --image <image-name>`
 32. `kubectl create cronjob <job-name> --image <image-name> --schedule <cron expression>`
+33. `kubectl expose deployment simple-webapp-deployment --name=webapp-service --target-port=8080 --type=NodePort --port=8080` // create service on given deployments
 
 
 
