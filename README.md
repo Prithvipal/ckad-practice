@@ -132,8 +132,8 @@ livenessProbe:
 The deployment strategy of existing deployment can be seen by describe command. You will find the field called `StrategyType` in the output of describe command.
 
 ## Service Type
-- **NodePort:** Valid range 30000 - 32767
-- ClusterIP
+- **NodePort:** Valid range 30000 - 32767. It access pod from host IP.
+- **ClusterIP:** Used for service to service call. It is a default Service type
 - LoadBalancer
 
 ## Notes:
